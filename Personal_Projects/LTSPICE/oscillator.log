@@ -1,16 +1,16 @@
 LTspice 24.1.9 for Windows
-Circuit: C:\Users\gavin\Documents\0Shared_Files\Personal_Projects\LTSPICE\oscillator_amp_test.net
-Start Time: Sat Mar  7 20:19:41 2026
+Circuit: C:\Users\gavin\Documents\0Shared_Files\Personal_Projects\LTSPICE\oscillator.net
+Start Time: Sun Mar  8 17:07:33 2026
 solver = Normal
 Maximum thread count: 16
 tnom = 27
 temp = 27
 method = trap
 Per .tran options, skipping operating point for transient analysis.
-Total elapsed time: 0.100 seconds.
+Total elapsed time: 0.246 seconds.
 
 Files loaded:
-C:\Users\gavin\Documents\0Shared_Files\Personal_Projects\LTSPICE\oscillator_amp_test.net
+C:\Users\gavin\Documents\0Shared_Files\Personal_Projects\LTSPICE\oscillator.net
 C:\Users\gavin\AppData\Local\LTspice\lib\cmp\standard.bjt
 C:\Users\gavin\AppData\Local\LTspice\lib\sub\UniversalOpAmp2.lib
 
