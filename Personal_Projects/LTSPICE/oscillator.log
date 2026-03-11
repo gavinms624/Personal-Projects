@@ -1,13 +1,13 @@
 LTspice 24.1.9 for Windows
 Circuit: C:\Users\gavin\Documents\0Shared_Files\Personal_Projects\LTSPICE\oscillator.net
-Start Time: Mon Mar  9 18:48:01 2026
+Start Time: Mon Mar  9 20:42:57 2026
 solver = Normal
 Maximum thread count: 16
 tnom = 27
 temp = 27
 method = trap
 Per .tran options, skipping operating point for transient analysis.
-Total elapsed time: 0.396 seconds.
+Total elapsed time: 0.079 seconds.
 
 Files loaded:
 C:\Users\gavin\Documents\0Shared_Files\Personal_Projects\LTSPICE\oscillator.net
