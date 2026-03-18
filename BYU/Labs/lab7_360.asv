@@ -1,14 +1,70 @@
-min_freq = 20e6;
-max_freq = 40e6;
+c = 3e8;
+def_freq = 20e6;
+min_freq = 40e6;
+max_freq = 80e6;
 zg = 50;
 z01 = 50;
 z02 = 70.7;
 zL = 100;
-E1_20 = 67;
-E2_20 = 90;
-E1 = 
+E1_20 = 67/360;
+E2_20 = 45/360;
+l1 = (c/def_freq)*E1_20;
+l2 = (c/def_freq)*E2_20;
+f = max_freq; % change for 2nd test
+E1 = l1*f/c;
+E2 = l2*f/c;
 
-gamma_L = (zL - z02)/(zL + z02)
+zin2 = z02*((zL + 1j*z02*tan(2*pi*E2))/(z02 + 1j*zL*tan(2*pi*E2)))
+zin = z01*((zin2 + 1j*z01*tan(2*pi*E1))/(z01 + 1j*zin2*tan(2*pi*E1)))
 
-gamma_in_2 = gamma_L * exp(1j*2*pi*E2);
-gamma_in = gamma_in_2 * exp(1j*2*pi*E1);
+gamma_L = (zL - z02)/(zL + z02);
+gamma_in = (zin - zg)/(zin + zg)
+gamma_L2 = (zin2 - z01) / (zin2 + z01);
+gamma_in2 = gamma_L2*exp(j*4*pi*E1);
+
+
+gamma_mag = 20*log10(abs(gamma_in))
+gamma_mag2 = 20*log10(abs(gamma_in2));
+
+%% Test 2
+
+c = 3e8;
+def_freq = 20e6;
+min_freq = 40e6;
+max_freq = 60e6;
+zg = 50;
+z01 = 50;
+z02 = 70.7;
+zL = 100;
+E1_20 = 67/360;
+E2_20 = 45/360;
+l1 = (c/def_freq)*E1_20;
+l2 = (c/def_freq)*E2_20;
+
+n = 100;
+mag = zeros(1, n);
+freq = linspace(1, 90e6, n);
+i = 1;
+for f = freq
+    % f = max_freq; % change for 2nd test
+    E1 = l1*f/c;
+    E2 = l2*f/c;
+    
+    zin2 = z02*((zL + 1j*z02*tan(2*pi*E2))/(z02 + 1j*zL*tan(2*pi*E2)));
+    zin = z01*((zin2 + 1j*z01*tan(2*pi*E1))/(z01 + 1j*zin2*tan(2*pi*E1)));
+    
+    gamma_L = (zL - z02)/(zL + z02);
+    gamma_in = (zin - zg)/(zin + zg);
+    gamma_L2 = (zin2 - z01) / (zin2 + z01);
+    gamma_in2 = gamma_L2*exp(1j*4*pi*E1);
+    
+    
+    gamma_mag = 20*log10(abs(gamma_in));
+    gamma_mag2 = 20*log10(abs(gamma_in2));
+    mag(i) = gamma_mag2;
+    i = i + 1;
+end
+close all;
+figure(1);
+plot(freq/1e6, mag)
+xlabel("F")
